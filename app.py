@@ -29,7 +29,7 @@ st.title("🔥 The Brutal Google Resume Reviewer")
 st.write("Built with Gemini & Google Cloud")
 
 # Create tabs for the two options
-tab1, tab2 = st.tabs(["✍️ Paste Text", "📂 Upload PDF (Visual Roast)"])
+tab1, tab2 = st.tabs(["✍️ Paste Summary", "📂 Upload PDF (Visual Roast)"])
 
 # --- OPTION 1: PASTE TEXT (Your original code) ---
 with tab1:
@@ -40,7 +40,7 @@ with tab1:
 
     if st.button("Roast My Text", key="text_btn"):
         if resume_text:
-            with st.spinner("Gemini is reading your text..."):
+            with st.spinner("We are reading your text..."):
                 prompt = """
                 Act as a brutal Google Recruiter. 
                 Analyze this resume snippet and give 3 specific, hard reasons why you would REJECT it. 
@@ -55,13 +55,13 @@ with tab1:
 # --- OPTION 2: UPLOAD PDF (New Visual Roast) ---
 with tab2:
     st.subheader("Visual & Layout Roast")
-    st.info("Gemini will look at the actual design, whitespace, and formatting of your PDF.")
+    st.info("we will look at the actual design, whitespace, and formatting of your PDF.")
     
     uploaded_file = st.file_uploader("Upload your Resume (PDF)", type=["pdf"])
 
     if st.button("Roast My PDF", key="pdf_btn"):
         if uploaded_file is not None:
-            with st.spinner("Converting PDF to image and judging your design choices..."):
+            with st.spinner("Judging you and your design choices..."):
                 try:
                     # 1. Convert PDF to Image (first page only for speed)
                     # poppler_path=None assumes poppler is in your PATH. 
@@ -85,7 +85,7 @@ with tab2:
                     # Display the image alongside the feedback
                     col1, col2 = st.columns([1, 2])
                     with col1:
-                        st.image(first_page_image, caption="What Gemini saw", use_column_width=True)
+                        st.image(first_page_image, caption="What we saw", use_column_width=True)
                     with col2:
                         st.markdown(feedback)
 
